@@ -202,32 +202,17 @@ class ThrowerAnt(Ant):
 
         This method returns None if there is no such Bee (or none in range).
         """
-        min_range = self.min_range
-        max_range = self.max_range
+
         scan = self.place
-        r = self.min_range
+        r = 0
 
-
-        # while len(scan.bees) == 0 and scan.entrance != hive:
-        #     scan = scan.entrance
-        #     r = r + 1
-        # if self.min_range <= r <= self.max_range:
-        #     return random_or_none(scan.bees)
-        # else:
-        #     return None
-
-
-
-
-
-
-        while True:
-            if scan != hive and scan.bees and r <= self.max_range:
+        while scan != hive:
+            if self.min_range <= r <= self.max_range and scan.bees:
                 return random_or_none(scan.bees)
             else:
-                r = r + 1
                 scan = scan.entrance
-
+                r += 1
+        return None
 
         # END Problem 3 and 4
 
